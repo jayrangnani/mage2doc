@@ -1,0 +1,401 @@
+		Magento 2 Doc
+
+		php bin/magento module:status
+
+		php bin/magento module:enable Dolphin_Slideshow
+
+		php bin/magento setup:upgrade
+
+		php bin/magento setup:static-content:deploy -f
+
+		php bin/magento indexer:reindex
+
+		php -dmemory_limit=1G bin/magento deploy:mode:show
+
+		-------------------------
+		Deploy Theme only
+		----------------------
+		php bin/magento setup:static-content:deploy --theme Jay/Customtheme
+
+	-------------------------------------
+		Magento Status
+	--------------------------------------
+			php bin/magento module:status
+
+	---------------------------------------------
+		Enable Module
+	---------------------------------------------
+				php bin/magento module:enable Magefan_LoginAsCustomer
+
+				php bin/magento module:enable Cloudinary_Cloudina
+
+				php bin/magento module:disable Oye_Deliverydate
+
+	--------------------------------------------------------
+		Upgrade site
+	--------------------------------------------------------
+				php bin/magento setup:upgrade
+	--------------------------------------------------------------
+
+	---------------------------------------------------------
+		Static Content Deploy
+	---------------------------------------------------------
+				php bin/magento setup:static-content:deploy
+
+				php bin/magento setup:static-content:deploy -f
+
+				php -dmemory_limit=1G bin/magento setup:static-content:deploy
+
+				php bin/magento module:disable Magestore_Bannerslider --clear-static-content
+
+
+	-------------------------------------------------------
+		Clean Catch
+  --------------------------------------------------------
+			php bin/magento cache:clean
+			php bin/magento cache:flush
+
+			chmod -R 777  var/*
+			chmod -R 777  pub/*
+	--------------------------------------------------------
+
+	--------------------------------------------------------
+		list Magento installed Module
+	--------------------------------------------------------
+			php bin/magento module:status
+
+	----------------------------------------------------------------
+		Disable Module
+	---------------------------------------------------------------
+		php bin/magento module:enable Shreeji_Extrafee
+		php bin/magento module:disable Mageplaza_Hello
+
+
+		php bin/magento module:enable Sivajik34_CustomFee
+		php bin/magento module:enable WeltPixel_Backend
+	---------------------------------------------------------
+
+	-----------------------------------------------------------
+			Maintence Model
+	-----------------------------------------------------------
+				php bin/magento maintenance:status
+
+				php bin/magento maintenance:enable
+				php bin/magento maintenance:disable
+	-------------------------------------------------------------
+
+	-------------------------------------------------------------
+			Install Magento Command line
+	-------------------------------------------------------------
+			php bin/magento setup:install --base-url=http://127.0.0.1/magento2/ \
+		--db-host=localhost --db-name=magento2 --db-user=root --db-password=root \
+		--admin-firstname=Magento --admin-lastname=User --admin-email=user@example.com \
+		--admin-user=admin --admin-password=admin123 --language=en_US \
+		--currency=USD --timezone=America/Chicago --use-rewrites=1
+
+
+
+			php -dmemory_limit=1G bin/magento deploy:mode:show
+
+
+
+			php -dmemory_limit=1G bin/magento setup:di:compile
+
+			php -dmemory_limit=1G bin/magento list
+
+			sudo usermod -a -G www-data dolphin45
+			sudo chmod -R 777 /home/ubuntu
+
+	-----------------------------------------------
+
+	Run Magento cron
+
+	php	bin/magento	cron:run
+
+	uninstall or reinstall magento 2
+	remove
+	------------------------------------------------
+	Magento uninstall
+	php bin/magento setup:uninstall
+
+	public_html/mage2/m219
+	demoproject / 6AX)Iq3WaHm.
+
+	 array (
+	        'host' => 'localhost',
+	        'dbname' => 'demoproj_mage217',
+	        'username' => 'demoproj_mage2',
+	        'password' => 'k7&q%fEwEH~)',
+	        'active' => '1',
+	      ),
+
+
+	Get configuration values
+	---------------------------------------------------------
+	$this->scopeConfig->getValue('helloworld/general/enable', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+	$this->scopeConfig->getValue('helloworld/general/display_text', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+
+	Heler Data
+	----------------------------------------------------------
+	$helper = $this->objectManager->create('Mageplaza\Hello\Helper\Data');
+	echo $helper->getGeneralConfig('enable');
+	echo $helper->getGeneralConfig('display_text');
+
+
+		Category Data and Filter
+	-------------------------------------------------------------------
+
+	 	 http://blog.chapagain.com.np/magento-2-get-list-of-all-categories-store-categories/
+
+		 $categoryFactory =$this->_objectManager->create('Magento\Catalog\Helper\Category');
+		 $categoryFactory =$categoryFactory->getStoreCategories(false,false,true);
+
+		 foreach($categoryFactory as $category)
+		 {
+				// echo $category->getId();
+				//echo "<pre>"; print_r($category); exit;
+		 }
+
+
+	Product Data and Filter
+	--------------------------------------------------------------------------
+		$productcollection = $this->_objectManager->create('Magento\Catalog\Model\ResourceModel\Product\Collection')
+											  ->addAttributeToSelect(['name', 'price', 'image'])
+											  ->addAttributeToFilter('name', array('like' => '%Iphone%'))
+											  ->setPageSize(10,1);
+
+
+	Magento 2 File Permissom
+	----------------------------------------------------------
+		https://magento.stackexchange.com/questions/91870/magento-2-folder-file-permissions
+
+		php bin/magento list
+
+		sudo chmod -R 777  var/*
+		sudo chmod -R 777  pub/*
+
+	developement mode
+	-----------------------------------
+		php bin/magento deploy:mode:show
+		php bin/magento deploy:mode:set developer
+
+	Print Query
+	------------------------------------
+		echo $productcollection->getSelect()->__toString();
+
+
+	Magento 2 reindex
+	------------------------------------
+		php bin/magento indexer:reindex
+
+	-------------------------------------------
+	Migrate Magento 2
+	------------------------------------------
+
+		https://www.cloudways.com/blog/migrate-from-magento-1-to-magento-2/
+
+		php bin/magento --version
+
+		composer config repositories.magento composer https://repo.magento.com
+		composer require magento/data-migration-tool:2.1.9
+
+		php bin/magento migrate:settings --reset vendor/magento/data-migration-tool/etc/ce-to-ce/1.9.3.6/config.xml
+		php bin/magento migrate:data --reset vendor/magento/data-migration-tool/etc/ce-to-ce/1.9.3.6/config.xml
+
+	-----------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------
+ Magento 2 Version Upgrade
+ ----------------------------------------------------------
+
+		composer require magento/product-community-edition 2.2.3 --no-update
+		composer update
+		rm -rf var/di var/generation
+		php bin/magento cache:clean
+		php bin/magento cache:flush
+		php bin/magento setup:upgrade
+		php bin/magento setup:di:compile
+		php bin/magento indexer:reindex
+
+
+
+	Magento must  Article
+	--------------------------------
+
+		http://blog.chapagain.com.np/category/magento/magento-2/
+
+		https://www.mageplaza.com/kb/exception-printing-is-disabled-by-default-for-security-reasons-magento-1-2.html
+
+		layout
+
+		http://devdocs.magento.com/guides/v2.0/frontend-dev-guide/layouts/xml-instructions.html
+
+	---------------------------------
+		di.xml
+	---------------------------------
+
+			http://blog.chapagain.com.np/maento-2-get-all-shopping-cart-items-subtotal-grand-total-billing-shipping-address/
+
+	-----------------------------------------------------------------------
+
+  ---------------------------------
+		Magento Relese Note
+	---------------------------------
+		http://devdocs.magento.com/guides/m1x/ce19-ee114/ce1.9_release-notes.html
+
+		Magento 2 extension to learn
+		https://redchamps.com/magento-2-extensions.html
+
+		Magento 2 XML
+		Mageento 2 xml changes
+
+
+
+
+		admin user
+
+		php bin/magento admin:user:create --admin-user="admin1" --admin-password="admin@123" --admin-email="admin1@example.com" --admin-firstname="Admin" --admin-lastname="Admin"
+
+
+Magento 2
+---------------------------------------------------------------------------------------------
+ 			List of all events
+---------------------------------------------------------------------------------------------
+			https://cyrillschumacher.com/magento2-list-of-all-dispatched-events/
+---------------------------------------------------------------------------------------------
+
+ ---------------------------------------------------------------------------------------------
+   Magento 2 Articles
+ ---------------------------------------------------------------------------------------------
+
+ 		https://oyenetwork.com/articles/data-migration-to-magento2-case-study/
+
+	--------------------------------------------------------------------------------------------
+
+
+ -------------------------------------------------------------------------------------------------------------------
+	Magento 2 Image Resize
+ -------------------------------------------------------------------------------------------------------------------
+		https://blog.qaisarsatti.com/magento_2/magento-2-custom-image-resize/
+ ---------------------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------------------------------------------
+Magento 2 sales addAttributeToFilter
+--------------------------------------------------------------------------------------------------------------------
+ 		https://magento.stackexchange.com/questions/131935/magento-2-how-to-create-new-order-attribute-programatically
+---------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------
+Magento 2 add JS by require js
+------------------------------------------------------------------
+			https://www.siphor.com/different-ways-using-javascript-magento-2/
+
+------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------
+Pestle For Magento 2
+----------------------------------------------------
+		https://github.com/astorm/pestle
+		https://alanstorm.com/category/magento-2/
+
+		Magento serving Files  :  https://alanstorm.com/magento-2-frontend-files-serving/
+
+
+
+---------------------------------------------------------------------
+Require Js
+---------------------------------------------------------------------
+	requirejs(['jquery'], function(jQuery){
+	    jQuery(function(){
+	        //your code here
+	    });
+	});
+
+	requirejs(['alias'], function(my_module){
+
+	});
+
+
+
+---------------------------------------------
+Magento Override
+---------------------------------------------
+		http://blog.chapagain.com.np/magento-2-override-rewrite-block-model-controller-helper-using-plugin-preference/
+
+---------------------------------------------
+Cron Tab Genrate Online
+---------------------------------------------
+		http://www.crontabgenerator.com/
+
+---------------------------------------------
+PHP online and function
+---------------------------------------------
+	 http://www.writephponline.com
+
+	 http://onlinephpfunctions.com/
+	 https://phpenthusiast.com/
+
+==========================================================
+	 To DO
+==========================================================
+   knokout.js magento 2
+
+
+Magento 2 Theme
+----------------------------------------------------------------
+	 	https://magento.stackexchange.com/questions/112655/theming-for-magento-2-starting-from-scratch
+
+		https://blog.magestore.com/magento-2-theme-development/
+
+		https://www.slideshare.net/Magestorecom/how-to-create-theme-in-magento-2-part-1
+
+		https://www.slideshare.net/mzeis/building-magento-2-extensions-101-for-magento-1-developers?next_slideshow=1
+
+
+========================================================================================================================
+	File permission
+=========================================================================================================================
+		https://magehit.com/blog/magento-2-file-folder-permissions-setting/
+
+		find . -type f -exec chmod 644 {} \;                        // 644 permission for files
+
+		find . -type d -exec chmod 755 {} \;                        // 755 permission for directory
+
+		find ./var -type d -exec chmod 777 {} \;                // 777 permission for var folder
+
+		find ./pub/media -type d -exec chmod 777 {} \;
+
+		find ./pub/static -type d -exec chmod 777 {} \;
+
+		chmod 777 ./app/etc
+
+		chmod 644 ./app/etc/*.xml
+
+
+=======================================================================
+	Install Sample data
+=======================================================================
+	1) download sample data:
+			php bin/magento sampledata:deploy
+
+ 	2) install sample data:
+			php bin/magento setup:upgrade
+
+========================================================================
+	Add  & Remove footer links
+========================================================================
+	https://magento.stackexchange.com/questions/93628/magento-2-remove-and-change-footer-links	
+			
+======================================================================
+	Magento keys
+======================================================================
+			 86bab24beee4bad6a6235f5ef97ecbba
+			 d022d78cd16efb8e27a1dd94ccfcc5ca
+			 
+	
+	mysql -u adcolise_tub -p adcolise_tub < file.sql
+	
