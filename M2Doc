@@ -1,0 +1,73 @@
+Default Block
+For Frontend : \Magento\Framework\View\Element\Template
+For Backend : \Magento\Backend\Block\Template
+
+Api ve
+
+
+How collection saved
+     in loop
+
+How select print
+        is method in collection
+
+
+block diff and container
+   can we change position of container
+
+
+where save method exist in model or api interface
+
+
+System.xml password and passwod data in config.xml and type.xml
+
+modelrepository where to save data where save exist
+
+controller  test/test_data
+path for xml and place for file
+
+
+----------------------------------------------------------------------------------
+
+https://magento.stackexchange.com/questions/146455/adding-custom-static-block-in-footer-issue-in-magento-2
+https://webkul.com/blog/call-custom-block-links-footer-magento-2/
+
+Add Static Block in container
+-------------------------------------------------------
+		<referenceContainer name="page.wrapper">
+            <block class="Magento\Cms\Block\Block" name="header_top">
+               <arguments>
+                   <argument name="block_id" xsi:type="string">header_top</argument>
+               </arguments>
+            </block>
+        </referenceContainer>
+
+Msagento 2 Remove Top Links
+----------------------------------------------------------
+      <referenceBlock name="top.links">
+          <referenceBlock name="register-link" remove="true" />           <!--for Create Account Link-->
+          <referenceBlock name="authorization-link" remove="true" />      <!--for Sign In Link  -->
+          <referenceBlock name="wish-list-link" remove="true" />          <!--for WishList Link-->
+          <referenceBlock name="my-account-link" remove="true" />         <!--for My Account Link-->
+    </referenceBlock>
+
+
+Remove Block
+----------------------------------------------------------------
+           <referenceBlock name="form.subscribe" remove="true" />    
+
+
+Templte Override
+---------------------------------------------------------------
+     <?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <referenceBlock name="product.info.addtocart">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Hello_Custom::product/view/addtocart.phtml</argument>
+                </action>
+            </referenceBlock>
+         </referenceContainer>
+    </body>
+</page>            

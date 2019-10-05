@@ -1,0 +1,189 @@
+
+Currency
+--------------------------------------------
+
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
+    $priceHelper = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
+    $price =  1000; //Your Price
+    $formattedPrice = $priceHelper->currency($price, true, false);
+
+
+Store and product Image
+---------------------------------------------------
+	$store = $objectManager->get('Magento\Store\Model\StoreManagerInterface')->getStore();
+	$store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) .'catalog/product'. $item->getProduct()->getImage();
+
+
+	1 Duplicate CMS Pages & Blocks M2
+
+	2 FAQ
+
+	3 Revision
+
+	4 Size Chart
+
+	5  Advanced Booking and Reservation
+
+	6  Magento base Price
+	 		 https://store.webkul.com/magento2-base-price-options.html
+
+	7  Product Grid Editor for Magento 2
+
+	8  Magento 2 Job Board
+
+	9  Magento 2 Product Attachment
+
+	10  Sales Representative Extension for Magento 2
+
+	11  Increase or Decrease price set
+
+	12 Virtual Try On for Magento 2
+
+	13  Order Attachments for Magento 2
+
+	14 Magento 2 Facebook Messenger Chat
+
+	15 Magento 2 Attribute Based Split Cart
+
+	16 Excessive Attempt Lock for Magento
+
+	17 Magento 2 Booking Reservation SMS Notification
+
+	18 Category Bulk Upload Using CSV/XML/XLS for Magento 2
+
+	19 Magento 2 Order Upload
+
+  20 Bundle Price
+
+  21 Call For price
+
+  22 Split Order
+
+  23 Order Delivery Date and time slot
+
+  24 Import and Export CMS Pages and Block
+
+  25 Import / Export Attributes
+
+  26 Import / Export URL REWRITES
+
+  27 Import / Export Customer Reviews
+
+  28 Import / Export Search Terms
+
+  29 Import / Export Product Relations
+
+  30 Import / Export Wishlist Items
+
+  31  Guest Checkout To Registered Customers
+
+  32   Import / Export Newsletter Subscribers
+
+  33  Excessive Attempt Lock for Magento 2
+
+  34  order sms api
+
+  35 Replace Add to Cart for Magento 2
+
+  
+
+   ---------------------------------------
+
+	 ADD new tab sales Order View page in Magento 2 Frontend
+	 			https://webkul.com/blog/adding-an-addition-tab-on-sales-order-view-page-frontend-magento-2/
+
+
+
+	 Add new sorting filed in product list page
+	 		   https://webkul.com/blog/how-to-add-more-sorting-fields-in-magento-2/
+
+
+	 Create UiGrid At Front End In Magento2
+		   	   https://webkul.com/blog/create-uigrid-at-front-end-in-magento2/
+
+
+
+	 Load Store Specific Category
+	 			    $category = $this->categoryFactory->create()->setStoreId(2)->load(4);   //here 2 is the store id of the second store
+					$categories = $this->categoryFactory->create()->setStoreId(2)->getCollection();     //here 2 is the store id of the second store
+
+
+	How to load Model by another field in Magento 2
+				  https://webkul.com/blog/how-to-load-model-by-another-field-in-magento-2/
+
+				  public function __construct(
+						.....
+						\Vendor\ModuleName\Model\StudentFactory $studentFactory,
+						.....
+					) {
+						.....
+						$this->studentFactory = $studentFactory;
+						.....
+					}
+
+					public function execute()
+					{
+						.....
+						$student = $this->studentFactory->create()->load('test@webkul.com','email');
+						.....
+					}
+
+
+	Programmatically Add More Product With Custom Options To An Existing Quote In Magento 2
+				https://webkul.com/blog/programmatically-add-more-product-with-custom-options-to-an-existing-quote-in-magento-2/
+
+
+
+
+		Add custom columns to Order Grid in Admin Magento 2   - do
+				https://webkul.com/blog/add-custom-columns-to-order-grid-in-admin-magento-2/
+
+
+
+	  Add custom columns along with filters to Product Grid in Admin Magento 2  - do
+			 https://webkul.com/blog/add-custom-columns-along-with-filters-to-product-grid-in-admin-magento-2/
+
+
+	  How to add link in Category Menu in Magento 2
+			 https://webkul.com/blog/how-to-add-link-in-category-menu-in-magento-2/
+
+
+	 Custum Order  - do
+
+
+	 How to add attribute to the body tag in Magento 2
+			https://webkul.com/blog/how-to-add-attribute-to-the-body-tag-in-magento-2/
+
+
+
+
+	Product-wise swatches in Magento 2
+			https://webkul.com/blog/product-wise-swatch-in-magento-2/
+
+
+
+
+	Use Nested Queries in Magento2 Admin UiGrid
+			 https://webkul.com/blog/use-nested-queries-in-magento2-admin-uigrid/
+
+
+    Add layere navigation in custum Pages
+            https://webkul.com/blog/how-to-create-layered-navigation-on-custom-page-in-magento-2/
+
+
+    run custum js after ajax Call
+              https://webkul.com/blog/how-to-run-custom-js-after-ajax-call-to-custom-section-load/
+
+
+    Product-wise swatches
+            https://webkul.com/blog/product-wise-swatch-in-magento-2/
+
+----------------------------------------------------
+https://www.rakeshjesadiya.com/
+
+
+composer
+			https://inviqa.com/blog/magento-2-tutorial-how-install-composer
+
+
+			Magento 2 Functional Testing Framework (MFTF) Merging
